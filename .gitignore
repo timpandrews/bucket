@@ -105,3 +105,14 @@ lib/
 .idea/vcs.xml
 
 .idea/misc.xml
+
+*.iml
+.idea/bucket.iml
+
+
+# Production Folders
+static_root/
+media_root/
+
+
+
