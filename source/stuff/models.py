@@ -41,7 +41,7 @@ class Item(models.Model):
     container = models.ForeignKey(Container, default=1)
     description = models.CharField(max_length=100)
     unit = models.CharField(max_length=25)
-    Qty = models.IntegerField()
+    qty = models.IntegerField()
     purchaseDate = models.DateTimeField(blank=True)
     bestByDate = models.DateTimeField(blank=True)
     checkOnFrequency = models.CharField(max_length=25, blank=True)
