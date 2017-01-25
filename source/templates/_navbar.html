@@ -32,9 +32,14 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="../navbar/">Default</a></li>
-                <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-                <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+                {% if user.is_authenticated %}
+                    <li class="welcome_User">Welcome {{ request.user.username }}</li>
+                    <li><a href="/profiles/{{ user.username }}/ ">Profile</a></li>
+                    <li><a href="/accounts/logout/ ">Logout</a></li>
+                {% else %}
+                    <li><a href="/accounts/login/">Login</a></li>
+                    <li><a href="/accounts/signup/">Sign Up</a></li>
+                {% endif %}
             </ul>
         </div><!--/.nav-collapse -->
     </div>

@@ -2,3 +2,11 @@
     height: 40px;
     margin-top: -10px;
 }
+
+.welcome_User {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    color: #441480;
+    font-weight: bold;
+}
