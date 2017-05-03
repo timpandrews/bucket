@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from stuff.forms import ItemForm
+from stuff.models import Item
+
 def stuff_list(request):
     context = {
         "title": "list"
@@ -7,10 +10,24 @@ def stuff_list(request):
     return render(request, "stuff_list.html", context)
 
 def stuff_create(request):
+    if not request.user.is_authenticated:
+        raise Http404
+
+    form = ItemForm(request.POST or None, request.FILES or None)
+
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        messages.success(request, "Successfully Created")
+        return HttpResponseRedirect(instance.get_absolute_url())
+
     context = {
-        "title": "create"
+        "title": "Add New Stuff",
+        "form": form,
     }
     return render(request, "stuff_form.html", context)
+
 
 def stuff_update(request, id=None):
     context = {
